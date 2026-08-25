@@ -92,29 +92,28 @@ const BASE_53_40_03_DATA = {
             "Cash Acceptors, GSM, Graphics, Scanner, Contactless (RFID), SDES, TDES, and Master Session are not supported."
           ]
         },
-        "Encrypting PIN Pad (EPP) with Advanced GSM": {
-          supportedOptions: [
-            { option: "Advanced GSM", minimumVersion: "See CRIND versions below." },
-            { option: "Graphics", minimumVersion: "See CRIND versions below." },
-            { option: "Scanner", minimumVersion: "See CRIND versions below." },
-            { option: "Contactless (RFID)", minimumVersion: "See CRIND versions below." }
-          ],
-          debit: [
-            { option: "SDES (DUKPT)", minimumVersion: "See CRIND versions below." },
-            { option: "TDES", minimumVersion: "See CRIND versions below." }
-          ],
-          crinds: [
-            { crindModel: "Advantage", model: "Advantage", minimumVersion: "62.6.10", recommendedMinimumVersion: "62.6.10", version: "62.6.10" },
-            { crindModel: "Encore 300", model: "Encore 300", minimumVersion: "62.6.10", recommendedMinimumVersion: "62.6.10", version: "62.6.10" },
-            { crindModel: "Encore 500", model: "Encore 500", minimumVersion: "3.1.50", recommendedMinimumVersion: "3.1.50", version: "3.1.50" },
-            // CHANGED: "Eclipse" reverted to "Ecilpse" (typo present in 53.40.03 source doc)
-            { crindModel: "Ecilpse", model: "Ecilpse", minimumVersion: "3.1.50", recommendedMinimumVersion: "3.1.50", version: "3.1.50" }
-          ],
-          notes: [
-            "An Advanced GSM is not required if EPP is injected with the correct debit key. However, it can be used until the EPPs are injected with the correct debit key.",
-            "Master Session and Cash Acceptors are not supported.",
-            "Please contact your Gilbarco servicer for the correct setup of the EPP and the mapping of the keypad."
-          ]
+ "Encrypting PIN Pad (EPP) with Advanced GSM": {
+  supportedOptions: [
+    { option: "Advanced GSM", minimumVersion: "See CRIND versions below." },
+    { option: "Graphics", minimumVersion: "See CRIND versions below." },
+    { option: "Scanner", minimumVersion: "See CRIND versions below." },
+    { option: "Contactless (RFID)", minimumVersion: "See CRIND versions below." }
+  ],
+  debit: [
+    { option: "SDES (DUKPT)", minimumVersion: "See CRIND versions below." },
+    { option: "TDES", minimumVersion: "See CRIND versions below." }
+  ],
+  crinds: [
+    { crindModel: "Advantage", recommendedMinimumVersion: "62.6.10" },
+    { crindModel: "Encore 300", recommendedMinimumVersion: "62.6.10" },
+    { crindModel: "Encore 500", recommendedMinimumVersion: "3.1.50" },
+    { crindModel: "Ecilpse", recommendedMinimumVersion: "3.1.50" }
+  ],
+  notes: [
+    "An Advanced GSM is not required if EPP is injected with the correct debit key. However, it can be used until the EPPs are injected with the correct debit key.",
+    "Master Session and Cash Acceptors are not supported.",
+    "Please contact your Gilbarco servicer for the correct setup of the EPP and the mapping of the keypad."
+  ]
         },
         "Advantage CRIND (Z180 Logic Board)": {
           supportedOptions: [
