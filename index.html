@@ -298,6 +298,7 @@
         <label>Base Software Version</label>
         <select id="baseSelect" onchange="onBaseChange()">
           <option value="">-- Select Version --</option>
+          <option value="53.40.03">Base 53.40.03</option>
           <option value="54.01.00">Base 54.01.00</option>
           <option value="54.02.00">Base 54.02.00</option>
           <option value="54.02.01-to-54.02.03">Base 54.02.01 to 54.02.03</option>
@@ -337,6 +338,7 @@
   </div>
 
   <!-- Import base version data files -->
+  <script src="data-53.40.03.js"></script>
   <script src="data-54.01.00.js"></script>
   <script src="data-54.02.00.js"></script>
   <script src="data-54.02.01-to-54.02.03.js"></script>
@@ -358,6 +360,7 @@
 <script>
   // Safely map base versions using conditional checks
   const versionDataMap = {
+    "53.40.03": typeof BASE_53_40_03_DATA !== 'undefined' ? BASE_53_40_03_DATA : null,
     "54.01.00": typeof BASE_54_01_00_DATA !== 'undefined' ? BASE_54_01_00_DATA : null,
     "54.02.00": typeof BASE_54_02_00_DATA !== 'undefined' ? BASE_54_02_00_DATA : null,
     "54.02.01-to-54.02.03": typeof BASE_54_02_01_TO_54_02_03_DATA !== 'undefined' ? BASE_54_02_01_TO_54_02_03_DATA : null,
