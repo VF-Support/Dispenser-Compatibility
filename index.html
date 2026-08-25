@@ -41,7 +41,7 @@
 
     .container {
       width: 100%;
-      max-width: 980px;
+      max-width: 1080px;
     }
 
     .card { 
@@ -82,11 +82,12 @@
       font-weight: 400;
     }
 
+    /* Updated Control Bar to 4 Columns */
     .controls { 
       background: #ffffff; 
       padding: 28px 32px; 
       display: flex; 
-      gap: 24px; 
+      gap: 18px; 
       border: 1px solid var(--border-color);
       border-top: none;
       border-radius: 0 0 12px 12px;
@@ -108,7 +109,7 @@
     }
 
     select { 
-      padding: 10px 14px; 
+      padding: 10px 12px; 
       width: 100%; 
       border: 1px solid #cbd5e1;
       border-radius: 8px;
@@ -158,7 +159,6 @@
       font-size: 13px;
     }
 
-    /* Primary Cyan Header Rows */
     th, .header-cyan { 
       background-color: var(--header-cyan-bg) !important; 
       color: var(--header-cyan-text) !important; 
@@ -231,7 +231,6 @@
       margin-bottom: 0;
     }
 
-    /* Glowing Certified Badge */
     .badge-certified {
       display: inline-flex;
       align-items: center;
@@ -257,7 +256,6 @@
       box-shadow: 0 0 6px var(--certified-border);
     }
 
-    /* Soft Red Disabled Badge */
     .badge-disabled {
       display: inline-flex;
       align-items: center;
@@ -293,29 +291,24 @@
       <p>Verifone Commander Recommended Minimum Firmware/Software Lookup</p>
     </div>
 
+    <!-- Grouped Dropdowns Interface -->
     <div class="controls">
       <div class="control-group">
-        <label>Base Software Version</label>
-        <select id="baseSelect" onchange="onBaseChange()">
-          <option value="">-- Select Version --</option>
-          <option value="53.40.03">Base 53.40.03</option>
-          <option value="54.01.00">Base 54.01.00</option>
-          <option value="54.02.00">Base 54.02.00</option>
-          <option value="54.02.01-to-54.02.03">Base 54.02.01 to 54.02.03</option>
-          <option value="54.02.04-to-54.02.05">Base 54.02.04 to 54.02.05</option>
-          <option value="55.00.00">Base 55.00.00</option>
-          <option value="55.00.01">Base 55.00.01</option>
-          <option value="55.01.00">Base 55.01.00</option>
-          <option value="55.01.01">Base 55.01.01</option>
-          <option value="55.02.00">Base 55.02.00</option>
-          <option value="55.02.01">Base 55.02.01</option>
-          <option value="55.02.02-to-55.02.03">Base 55.02.02 to 55.02.03</option>
-          <option value="55.02.04">Base 55.02.04</option>
-          <option value="55.02.05-to-55.02.09">Base 55.02.05 to 55.02.09</option>
-          <option value="55.02.10-to-55.02.11">Base 55.02.10 to 55.02.11</option>
-          <option value="56.00.00-to-56.01.00">Base 56.00.00 to 56.01.00</option>
-          <option value="56.01.00-to-57.00.01">Base 56.01.00 to 57.00.01</option>
-          <option value="57.01.00">Base 57.01.00</option>
+        <label>Commander Base</label>
+        <select id="majorBaseSelect" onchange="onMajorBaseChange()">
+          <option value="">-- Major Release --</option>
+          <option value="53">Base 53</option>
+          <option value="54">Base 54</option>
+          <option value="55">Base 55</option>
+          <option value="56">Base 56</option>
+          <option value="57">Base 57</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Patch Version</label>
+        <select id="baseSelect" onchange="onBaseChange()" disabled>
+          <option value="">-- Select Major First --</option>
         </select>
       </div>
 
@@ -337,7 +330,7 @@
     <div id="displayArea" class="display-area" style="display:none;"></div>
   </div>
 
-  <!-- Import base version data files -->
+  <!-- Data Imports -->
   <script src="data-53.40.03.js"></script>
   <script src="data-54.01.00.js"></script>
   <script src="data-54.02.00.js"></script>
@@ -356,9 +349,40 @@
   <script src="data-56.00.00-to-56.01.00.js"></script>
   <script src="data-56.01.00-to-57.00.01.js"></script>
   <script src="data-57.01.00.js"></script>
-  
+
 <script>
-  // Safely map base versions using conditional checks
+  // Dynamic Grouping Map
+  const baseGroups = {
+    "53": [
+      { id: "53.40.03", label: "53.40.03" }
+    ],
+    "54": [
+      { id: "54.01.00", label: "54.01.00" },
+      { id: "54.02.00", label: "54.02.00" },
+      { id: "54.02.01-to-54.02.03", label: "54.02.01 to 54.02.03" },
+      { id: "54.02.04-to-54.02.05", label: "54.02.04 to 54.02.05" }
+    ],
+    "55": [
+      { id: "55.00.00", label: "55.00.00" },
+      { id: "55.00.01", label: "55.00.01" },
+      { id: "55.01.00", label: "55.01.00" },
+      { id: "55.01.01", label: "55.01.01" },
+      { id: "55.02.00", label: "55.02.00" },
+      { id: "55.02.01", label: "55.02.01" },
+      { id: "55.02.02-to-55.02.03", label: "55.02.02 to 55.02.03" },
+      { id: "55.02.04", label: "55.02.04" },
+      { id: "55.02.05-to-55.02.09", label: "55.02.05 to 55.02.09" },
+      { id: "55.02.10-to-55.02.11", label: "55.02.10 to 55.02.11" }
+    ],
+    "56": [
+      { id: "56.00.00-to-56.01.00", label: "56.00.00 to 56.01.00" },
+      { id: "56.01.00-to-57.00.01", label: "56.01.00 to 57.00.01" }
+    ],
+    "57": [
+      { id: "57.01.00", label: "57.01.00" }
+    ]
+  };
+
   const versionDataMap = {
     "53.40.03": typeof BASE_53_40_03_DATA !== 'undefined' ? BASE_53_40_03_DATA : null,
     "54.01.00": typeof BASE_54_01_00_DATA !== 'undefined' ? BASE_54_01_00_DATA : null,
@@ -382,20 +406,49 @@
 
   let selectedVersionData = null;
 
-  function onBaseChange() {
-    const baseVal = document.getElementById("baseSelect").value;
+  function resetDownstreamSelectors() {
     const brandSelect = document.getElementById("brandSelect");
     const platformSelect = document.getElementById("platformSelect");
     const displayArea = document.getElementById("displayArea");
 
     brandSelect.innerHTML = '<option value="">-- Select Brand --</option>';
+    brandSelect.disabled = true;
     platformSelect.innerHTML = '<option value="">-- Select Platform --</option>';
     platformSelect.disabled = true;
     displayArea.style.display = "none";
     displayArea.innerHTML = "";
+  }
+
+  function onMajorBaseChange() {
+    const majorVal = document.getElementById("majorBaseSelect").value;
+    const patchSelect = document.getElementById("baseSelect");
+
+    patchSelect.innerHTML = '<option value="">-- Select Patch --</option>';
+    resetDownstreamSelectors();
+
+    if (!majorVal || !baseGroups[majorVal]) {
+      patchSelect.disabled = true;
+      return;
+    }
+
+    baseGroups[majorVal].forEach(item => {
+      const opt = document.createElement("option");
+      opt.value = item.id;
+      opt.textContent = item.label;
+      patchSelect.appendChild(opt);
+    });
+
+    patchSelect.disabled = false;
+  }
+
+  function onBaseChange() {
+    const baseVal = document.getElementById("baseSelect").value;
+    const brandSelect = document.getElementById("brandSelect");
+    const displayArea = document.getElementById("displayArea");
+
+    resetDownstreamSelectors();
 
     if (!baseVal || !versionDataMap[baseVal]) {
-      brandSelect.disabled = true;
       if (baseVal && !versionDataMap[baseVal]) {
         displayArea.style.display = "block";
         displayArea.innerHTML = `<div class="note-box" style="border-left-color: #ef4444;">Data file for <b>Base ${baseVal}</b> is missing or not loaded correctly.</div>`;
@@ -412,8 +465,6 @@
         opt.textContent = brand;
         brandSelect.appendChild(opt);
       });
-      brandSelect.disabled = false;
-    } else {
       brandSelect.disabled = false;
     }
   }
@@ -447,7 +498,6 @@
     }
   }
 
-  // Helper function to dynamically generate HTML tables from array of objects
   function generateDynamicTable(dataArray, customHeaders = null, tableHeaderHtml = '') {
     if (!dataArray || !Array.isArray(dataArray) || dataArray.length === 0) return '';
 
@@ -538,7 +588,6 @@
       html += generateDynamicTable(platformData.emvStatus);
     }
 
-    // Process the missing Visa Fleet 2.0 / WEX 4.1 Support table
     if (platformData.visaFleetSupportSection) {
       const section = platformData.visaFleetSupportSection;
       html += generateDynamicTable(section.rows, section.headers);
