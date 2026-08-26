@@ -331,7 +331,10 @@
   </div>
 
   <!-- Data Imports -->
-  <script src="data-53.40.03.js"></script>
+  <script src="data-53.40.03-to-53.40.48.js"></script>
+  <script src="data-53.41.03-to-53.41.04.js"></script>
+  <script src="data-53.41.50-to-53.41.54.js"></script>
+  <script src="data-53.41.55.js"></script>
   <script src="data-54.01.00.js"></script>
   <script src="data-54.02.00.js"></script>
   <script src="data-54.02.01-to-54.02.03.js"></script>
@@ -354,7 +357,10 @@
   // Dynamic Grouping Map
   const baseGroups = {
     "53": [
-      { id: "53.40.03", label: "53.40.03" }
+      { id: "53.40.03-to-53.40.48", label: "53.40.03 to 53.40.48" },
+      { id: "53.41.03-to-53.41.04", label: "53.41.03 to 53.41.04" },
+      { id: "53.41.50-to-53.41.54", label: "53.41.50 to 53.41.54" },
+      { id: "53.41.55", label: "53.41.55" }
     ],
     "54": [
       { id: "54.01.00", label: "54.01.00" },
@@ -384,7 +390,10 @@
   };
 
   const versionDataMap = {
-    "53.40.03": typeof BASE_53_40_03_DATA !== 'undefined' ? BASE_53_40_03_DATA : null,
+    "53.40.03-to-53.40.48": typeof BASE_53_40_03_TO_53_40_48_DATA !== 'undefined' ? BASE_53_40_03_TO_53_40_48_DATA : null,
+    "53.41.03-to-53.41.04": typeof BASE_53_41_03_TO_53_41_04_DATA !== 'undefined' ? BASE_53_41_03_TO_53_41_04_DATA : null,
+    "53.41.50-to-53.41.54": typeof BASE_53_41_50_TO_53_41_54_DATA !== 'undefined' ? BASE_53_41_50_TO_53_41_54_DATA : null,
+    "53.41.55": typeof BASE_53_41_55_DATA !== 'undefined' ? BASE_53_41_55_DATA : null,
     "54.01.00": typeof BASE_54_01_00_DATA !== 'undefined' ? BASE_54_01_00_DATA : null,
     "54.02.00": typeof BASE_54_02_00_DATA !== 'undefined' ? BASE_54_02_00_DATA : null,
     "54.02.01-to-54.02.03": typeof BASE_54_02_01_TO_54_02_03_DATA !== 'undefined' ? BASE_54_02_01_TO_54_02_03_DATA : null,
