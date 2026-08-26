@@ -1,4 +1,4 @@
-const DATA_53_41_55 = {
+const BASE_53_41_55 = {
   version: "53.41.55",
   brands: {
     "Bennett": {
