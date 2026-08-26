@@ -1,5 +1,5 @@
 const BASE_53_40_03_TO_53_40_48_DATA = { 
-  version: "53.40.03 to 53.40.48",
+  version: "Base 53.40.03 to 53.40.48",
   brands: {
     "Bennett": {
       generalNote: 'See <a href="https://www.vfne.co/verifone-petro-emv-updates" target="_blank">https://www.vfne.co/verifone-petro-emv-updates</a> for Outdoor EMV Implementation Status updates.',
